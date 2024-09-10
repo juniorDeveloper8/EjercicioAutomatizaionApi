@@ -1,0 +1,33 @@
+Conclusiones del Ejercicio de Pruebas de APIs
+
+Durante la ejecución de las pruebas para los servicios de `signup` y `login` proporcionados por la página https://www.demoblaze.com/,
+se identificaron los siguientes hallazgos y conclusiones:
+
+1. **Prueba de Signup**:
+   - **Crear un nuevo usuario**: La prueba para crear un nuevo usuario se ejecutó correctamente, obteniendo un estado HTTP 200 y sin mensajes de error.
+   Esto indica que el usuario fue creado exitosamente en el sistema.
+   - **Intentar crear un usuario ya existente**: Al intentar registrar un usuario con un nombre de usuario ya existente,
+   el sistema respondió con un mensaje de error indicando "This user already exist." y un estado HTTP 200.
+   Esto confirma que el sistema maneja adecuadamente la validación de usuarios duplicados.
+
+2. **Prueba de Login**:
+   - **Usuario y password correctos**:
+     - Durante la prueba con el usuario `prueba30` y la contraseña `testing852`, se obtuvo un estado HTTP 200 y un token de autenticación en la respuesta,
+     lo que indica que el usuario fue autenticado correctamente.
+     - El sistema respondió con un valor para `Auth_token`, confirmando que la autenticación fue exitosa y proporcionando el token necesario para acceder a los recursos protegidos.
+   - **Usuario y password incorrectos**:
+     - En la prueba con el usuario `usuarioExistentsdfsdfe` y la contraseña `password123`, se obtuvo un estado HTTP 200 pero con un mensaje de error "User does not exist."
+     Esta respuesta confirma que el sistema maneja adecuadamente los intentos de inicio de sesión con credenciales no registradas.
+
+3. **Observaciones Generales**:
+   - **Manejo de Errores y Respuestas**: Las respuestas del sistema fueron claras y consistentes para los casos de éxito y error.
+   La presencia de `Auth_token` en respuestas exitosas y el mensaje de error en casos de fallo proporcionan una buena base para validar el comportamiento del sistema.
+   - **Estabilidad del Servidor**: Durante la ejecución del test de login, se presentó un error 502 en la primera prueba debido a la caída del servidor.
+   Este error fue temporal, y la segunda ejecución resultó en una respuesta correcta.
+   La estabilidad del servidor es un aspecto crítico que debe ser monitoreado para garantizar la disponibilidad continua del servicio.
+   - **Automatización de Pruebas**: La automatización de las pruebas de API facilita la validación continua y repetitiva de funcionalidades clave,
+   proporcionando una base sólida para la verificación de que los servicios de `signup` y `login` funcionan como se espera.
+
+En resumen, el ejercicio mostró que el sistema de `signup` y `login` de la API funciona correctamente en los escenarios de prueba descritos.
+Las observaciones sobre la estabilidad del servidor y el manejo de errores proporcionan información valiosa para futuras pruebas y para mejorar la confiabilidad del servicio.
+
