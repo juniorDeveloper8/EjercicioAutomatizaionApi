@@ -1,0 +1,16 @@
+{
+  "logins": [
+    {
+      "username": "prueba30",
+      "password": "testing852",
+      "status": 200,
+      "errorMessage": null
+    },
+    {
+      "username": "usuarioExistentsdfsdfe",
+      "password": "password123",
+      "status": 200,
+      "errorMessage": "User does not exist."
+    }
+  ]
+}

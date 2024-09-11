@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "username": "RoberthZambrano456M",
+      "password": "pass1",
+      "errorMessage": null
+    },
+    {
+      "username": "userExisting",
+      "password": "passExisting",
+      "errorMessage": "This user already exist."
+    }
+  ]
+}

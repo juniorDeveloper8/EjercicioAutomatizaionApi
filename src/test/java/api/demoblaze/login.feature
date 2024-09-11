@@ -2,8 +2,10 @@ Feature: Pruebas de Inicio de Sesión
 
   Background:
     * url 'https://api.demoblaze.com/login'
+    * def testData = karate.read('classpath:api/demoblaze/template/login_data.json')
 
   Scenario Outline: Iniciar sesión con <username> y <password>
+    * def loginData = karate.get('testData.logins').find(x => x.username == '<username>' && x.password == '<password>')
     Given request { "username": "<username>", "password": "<password>" }
     When method post
     Then status <status>
