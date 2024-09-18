@@ -4,8 +4,8 @@ Durante la evaluación de los servicios de signup y login en el sitio web https:
 
 1. Prueba de Signup:
 
- - Creación de un Nuevo Usuario: La prueba para registrar un nuevo usuario se completó con éxito, con un estado HTTP 200 y sin mensajes de error.
-   Esto confirma que el proceso de creación de usuarios funciona correctamente.
+ - Creación de un Nuevo Usuario: La prueba de registro de un nuevo usuario fue exitosa. Recibimos un estado HTTP 200 y no hubo mensajes de error,
+    lo que indica que el proceso de creación de usuarios funciona correctamente.
  - Registro de Usuario Duplicado: Al intentar crear un usuario con un nombre ya registrado, el sistema respondió con un mensaje de error "This user already exist."
    y un estado HTTP 200. Esto demuestra que la API maneja adecuadamente la validación de usuarios duplicados.
 
