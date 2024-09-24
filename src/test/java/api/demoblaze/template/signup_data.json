@@ -1,14 +1,15 @@
 {
-  "users": [
+  "user":
     {
-      "username": "RickZanches",
+      "username": "Morty137Earth",
       "password": "pass1",
       "errorMessage": null
     },
+    "createdUser":
     {
       "username": "userExisting",
       "password": "passExisting",
       "errorMessage": "This user already exist."
     }
-  ]
+
 }
