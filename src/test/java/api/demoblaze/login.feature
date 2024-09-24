@@ -4,19 +4,24 @@ Feature: Pruebas de Inicio de Sesión
     * url 'https://api.demoblaze.com/login'
     * def testData = karate.read('classpath:api/demoblaze/template/login_data.json')
 
-  Scenario Outline: Iniciar sesión con <username> y <password>
-    * def loginData = karate.get('testData.logins').find(x => x.username == '<username>' && x.password == '<password>')
-    Given request { "username": "<username>", "password": "<password>" }
+  Scenario: Iniciar sesión con un usuario válido
+    Given request { "username": "prueba30", "password": "testing852" }
     When method post
-    Then status <status>
+    Then status 200
     * def response = response
     * def hasAuthToken = response.Auth_token
     * def hasErrorMessage = response.errorMessage
     * if (hasAuthToken) karate.match(response.Auth_token, '#string')
-    * if (hasErrorMessage) karate.match(response.errorMessage, <errorMessage>)
+    * if (hasErrorMessage) karate.match(response.errorMessage, null)
     And print response
 
-    Examples:
-      | username               | password    | status | errorMessage           |
-      | prueba30               | testing852  | 200    | null                   |
-      | usuarioExistentsdfsdfe | password123 | 200    | 'User does not exist.' |
+  Scenario: Iniciar sesión con un usuario que no existe
+    Given request { "username": "usuarioExistentsdfsdfe", "password": "password123" }
+    When method post
+    Then status 200
+    * def response = response
+    * def hasAuthToken = response.Auth_token
+    * def hasErrorMessage = response.errorMessage
+    * if (hasAuthToken) karate.match(response.Auth_token, null)
+    * if (hasErrorMessage) karate.match(response.errorMessage, 'User does not exist.')
+    And print response

@@ -15,14 +15,9 @@ Feature: Pruebas de Signup
     Then status 200
     And match response.errorMessage == user.errorMessage
 
-
-  Scenario Outline: Intentar crear un usuario ya existente
-    Given request { "username": "<username>", "password": "<password>" }
+  Scenario: Intentar crear un usuario ya existente
+    * def existingUser = testData.users.find(u => u.username == 'userExisting')
+    Given request { "username": existingUser.username, "password": existingUser.password }
     When method post
     Then status 200
-    And match response.errorMessage == "<errorMessage>"
-
-    Examples:
-      | username         | password    | errorMessage             |
-      | usuarioExistente | password123 | This user already exist. |
-
+    And match response.errorMessage == existingUser.errorMessage
