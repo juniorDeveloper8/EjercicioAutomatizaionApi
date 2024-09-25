@@ -1,15 +1,11 @@
 {
-  "user":
-    {
-      "username": "Mortyc137Earth",
-      "password": "pass1",
-      "errorMessage": null
-    },
-    "createdUser":
-    {
-      "username": "userExisting",
-      "password": "passExisting",
-      "errorMessage": "This user already exist."
-    }
-
+  "user": {
+    "username": "РобертСамбрано",
+    "password": "pass1"
+  },
+  "usuarioExistente": {
+    "username": "userExisting",
+    "password": "passExisting",
+    "errorMessage": "This user already exist."
+  }
 }
