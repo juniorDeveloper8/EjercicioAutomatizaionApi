@@ -2,10 +2,10 @@ Feature: Pruebas de Inicio de Sesión
 
   Background:
     * url 'https://api.demoblaze.com/login'
-    * def testData = karate.read('classpath:api/demoblaze/template/login_data.json')
+    * def login = karate.read('classpath:loginJson.json')
 
   Scenario: Iniciar sesión con un usuario válido
-    Given request { username: '#login_Data.logins.username', password: '#login_Data.logins.password' }
+    Given request { username: '#(login.userValid.username)', password: '#(login.userValid.password)' }
     When method post
     Then status 200
     * def response = response
@@ -16,7 +16,7 @@ Feature: Pruebas de Inicio de Sesión
     And print response
 
   Scenario: Iniciar sesión con un usuario que no existe
-    Given request { username: '#login_Data.loginInvalid.username', password: '#login_Data.loginInvalid.password' }
+    Given request { username: '#(login.loginInvalid.username)', password: '#(login.loginInvalid.password)' }
     When method post
     Then status 200
     * def response = response

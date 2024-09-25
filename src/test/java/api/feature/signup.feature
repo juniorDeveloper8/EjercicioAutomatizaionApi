@@ -2,10 +2,10 @@ Feature: Pruebas de Signup
 
   Background:
     * url 'https://api.demoblaze.com/signup'
-    * def testData = karate.read('classpath:api/demoblaze/template/signup_data.json')
-    * def user = testData.user
-    * def usuarioExistente = testData.usuarioExistente
-    * print 'Loaded test data:', testData
+    * def registro = karate.read('classpath:signup_data.json')
+    * def user = registro.user
+    * def usuarioExistente = registro.usuarioExistente
+    * print 'Loaded test data:', registro
 
   Scenario: Crear un nuevo usuario
     Given request { username: '#(user.username)', password: '#(user.password)' }
@@ -14,7 +14,7 @@ Feature: Pruebas de Signup
     And match response.errorMessage == user.errorMessage
 
   Scenario: Intentar crear un usuario ya existente
-    Given request { username: '#(signup_data.usuarioExistente.username)', password: '#(signup_data.usuarioExistente.password)' }
+    Given request { username: '#(registro.usuarioExistente.username)', password: '#(registro.usuarioExistente.password)' }
     When method post
     Then status 200
     And match response.errorMessage == usuarioExistente.errorMessage

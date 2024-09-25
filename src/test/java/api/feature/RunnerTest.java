@@ -1,4 +1,4 @@
-package api.demoblaze;
+package api.feature;
 
 import com.intuit.karate.junit5.Karate;
 
